@@ -1,0 +1,65 @@
+{
+  "name": "web-ble-kit",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Generic Web Bluetooth infrastructure for device libraries",
+  "keywords": [
+    "bluetooth",
+    "web-bluetooth",
+    "ble",
+    "gatt"
+  ],
+  "license": "MIT",
+  "author": "Mwea",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mwea/web-ble-kit.git"
+  },
+  "homepage": "https://github.com/Mwea/web-ble-kit#readme",
+  "bugs": {
+    "url": "https://github.com/Mwea/web-ble-kit/issues"
+  },
+  "main": "./dist/web-ble-kit.cjs",
+  "module": "./dist/web-ble-kit.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/web-ble-kit.js",
+      "require": "./dist/web-ble-kit.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "biome": "^0.3.3",
+    "p-retry": "^6.2.1"
+  },
+  "scripts": {
+    "build": "npm run build:types && npm run build:esm && npm run build:cjs",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:esm": "esbuild src/index.ts --bundle --format=esm --outfile=dist/web-ble-kit.js --target=es2022 --sourcemap",
+    "build:cjs": "esbuild src/index.ts --bundle --format=cjs --outfile=dist/web-ble-kit.cjs --target=es2022 --sourcemap --external:p-retry",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check src/",
+    "lint:fix": "biome check --write src/",
+    "format": "biome format --write src/",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.14",
+    "@types/node": "^22.0.0",
+    "@types/web-bluetooth": "^0.0.21",
+    "esbuild": "^0.27.0",
+    "fast-check": "^4.5.0",
+    "typescript": "^5.6.0",
+    "vitest": "^4.0.0"
+  },
+  "engines": {
+    "node": "^20.0.0 || ^22.0.0 || >=24.0.0"
+  }
+}
