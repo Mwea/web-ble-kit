@@ -1,6 +1,6 @@
 {
   "name": "web-ble-kit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "Generic Web Bluetooth infrastructure for device libraries",
   "keywords": [
@@ -35,7 +35,6 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "biome": "^0.3.3",
     "p-retry": "^6.2.1"
   },
   "scripts": {
